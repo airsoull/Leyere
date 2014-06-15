@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}
+	{% trans "Actualizar" %} {{ object.name }} - {{ current_site.name }}
+{% endblock title %}
+{% block title_page %}
+	{% trans "Actualizar" %} "{{ object.name }}"
+{% endblock title_page %}
+{% block content %}
+{% if messages %}
+	<div class="alert alert-success">
+		{% for message in messages %}
+    		{{ message }}
+    	{% endfor %}
+	</div>
+{% endif %}
+	{% include "stories/story_form.html" with form=form %}
+{% endblock content %}

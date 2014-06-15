@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load activity_tags %}
+{% load threadedcomments_tags %}
+{% load bootstrap %}
+{% load sekizai_tags %}
+
+{% block title %}{{ object.name|title }}{% endblock title %}
+{% block title_page %}{{ object.name|title }}{% endblock title_page %}
+{% block category_page %}<a href="{{ object.category.get_absolute_url }}">{{ object.category.name|upper }}</a>{% endblock category_page %}
+{% block description %}{{ object.description }}{% endblock description %}
+
+{% block extra_info %}
+	<strong>{% trans "Author" %}</strong>: {% if not object.anonymous %}<a href="{{ object.user.profile.get_absolute_url }}">{% endif %}{{ object.get_author|upper }}{% if not object.anonymous %}</a>{% endif %}
+	<br/>
+	<strong>{% trans "Date" %}</strong>: {{ object.created }}
+	<br/>
+	<strong>{% trans "Updated" %}</strong>: {{ object.updated }}
+{% endblock extra_info %}
+
+
+{% block breadcrumb %}
+  <ol class="breadcrumb hidden-xs">
+    <li><a href="{% url 'home' %}">{% trans "Home" %}</a></li>
+    <li><a href="{{ object.category.get_absolute_url }}">{{ object.category.name|title }}</a></li>
+    <li class="active">{{ object.name }}</li>
+  </ol> <br/>
+  {% with request.user|is_following:story as following %}
+  <a href="{% if request.user.is_authenticated %}{% follow_url story %}?next={{ object.get_absolute_url }}{% else %}{% url 'auth_login' %}?next={{ object.get_absolute_url }}{% endif %}"><i class="fa fa-star{{ following|yesno:',-o' }} fa-4"></i></a>
+  {% endwith %}
+{% endblock breadcrumb %}
+
+
+{% block content %}
+{% if messages %}
+	<div class="alert alert-success">
+		{% for message in messages %}
+    		{{ message }}
+    	{% endfor %}
+	</div>
+{% endif %}
+<strong>
+<a href="#" style="font-size:18px" id="text-min" title="{% trans "Disminuir Letra" %}">A-</a>&nbsp;&nbsp;
+<a href="#" style="font-size:18px" id="text-normal" title="{% trans "Letra Normal" %}">A</a>&nbsp;&nbsp;
+<a href="#" style="font-size:18px" id="text-max" title="{% trans "Aumentar Letra" %}">A+</a>
+</strong>
+<br/><br/>
+<div id="text">
+  {{ object.text|linebreaks }}
+</div>
+<br/>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a>
+{% comment %}
+  <br />Esta obra está bajo una <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Licencia Creative Commons Atribución-NoComercial-SinDerivar 4.0 Internacional</a>.
+{% endcomment %}
+<br/><br/>
+
+<!-- Inserta esta etiqueta donde quieras que aparezca Botón +1. -->
+<div class="g-plusone" data-size="tall" width="151px"></div>
+
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-via="QueLeeras" data-lang="es" data-size="large" data-dnt="true">Twittear</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;width&amp;layout=box_count&amp;action=like&amp;show_faces=false&amp;share=true&amp;height=65&amp;appId=779057752118008" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:65px;" allowTransparency="true"></iframe>
+
+
+<!-- Inserta esta etiqueta después de la última etiqueta de Botón +1. -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'es'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<br/><br/>
+<h2 class="post-title">{% trans "Comments" %}</h2>
+{% if user.is_authenticated %}
+  {% render_comment_form for object %}
+  <br/><br/><br/>
+{% endif %}
+
+{% render_comment_list for object %}
+
+{% addtoblock 'js' %}
+<script>
+$(document).on("ready", event);
+function event(ev){
+  var $size = parseFloat($('#text').css('font-size'));
+  var $variable_size = $size;
+  var $text = $('#text');
+
+  $('#text-min').click(function(){
+    $variable_size = $variable_size - 1;
+    $text.css('font-size', $variable_size);
+    return false;
+  });
+
+  $('#text-normal').click(function(){
+    $variable_size = $size;
+    $text.css('font-size', $size);
+    return false;
+  });
+
+  $('#text-max').click(function(){
+    $variable_size = $variable_size + 1;
+    $text.css('font-size', $variable_size);
+    return false;
+  });
+  
+}
+</script>
+{% endaddtoblock %}
+
+{% endblock content %}

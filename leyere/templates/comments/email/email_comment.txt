@@ -1,0 +1,8 @@
+{% load i18n %}
+
+{% trans "Ha recibido un nuevo comentario para" %} {{ comment.content_object.name }}
+
+{% trans "Para revisar el comentario vaya al siguiente link:" %} <a href="{{ comment.site.domain }}{{ comment.get_absolute_url }}">{% trans "comentario" %}</a>
+
+
+URL: {{ comment.site.domain }}{{ comment.get_absolute_url }}

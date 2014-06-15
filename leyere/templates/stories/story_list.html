@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% block title %}
+  {{ category|title }} {% trans "Listado" %}
+{% endblock title %}
+
+
+{% block title_page %}
+  {{ category|title }} {% trans "Listado" %}
+{% endblock title_page %}
+
+
+{% block extra_info %}
+    
+{% endblock extra_info %}
+
+
+{% block content %}
+{% include "stories/story_list_all.html" with stories=object_list.all %}
+
+{% if is_paginated %}
+<section>
+    <ul class="pagination">
+    	{% if page_obj.has_previous %}
+        <li><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+        {% endif %}
+        {% for page in page_obj.paginator.page_range %}
+			{% ifequal page page_obj.number %}
+				<li class="active"><a href="{{ request.path }}?page={{ page }}">{{ page }}</a></li>
+			{% else %}
+				<li><a href="{{ request.path }}?page={{ page }}">{{ page }}</a></li>
+			{% endifequal %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li><a href="{{ request.path }}?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+        {% endif %}
+    </ul>
+</section>
+{% endif %}
+
+{% endblock content %}

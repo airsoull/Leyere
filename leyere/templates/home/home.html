@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+	<div class="col-md-6">
+		<h2 class="post-title">{% trans "Últimas Historias" %}</h2>
+		{% include "stories/simple_story_list.html" with stories=object_list|dictsortreversed:'created' %}
+	</div>
+	<div class="col-md-6">
+		<h2 class="post-title">{% trans "Últimas Historias Anónimas" %}</h2>
+		{% include "stories/simple_story_list.html" with stories=stories_anonymous|dictsortreversed:'created' %}
+	</div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% load i18n %}
+{% for story in stories %}  
+    <div class="col-md-6">
+        <section>
+            <div class="panel panel-default  animated fadeInDown animation-delay-8">
+                <div class="panel-body">
+                    <h3 class="section-title"><a href="{{ story.get_absolute_url }}">{{ story.name }}</a></h3>
+                    <span class="pull-left"><a href="{{ story.category.get_absolute_url }}">{{ story.category.name|upper }}</a></span><div class="clearfix"></div>
+                    <p class="no-margin-top">{{ story.description }}</p>
+                    <div class="clearfix"></div>
+                    <hr>
+                    <strong>{% trans "Author" %}</strong>: {% if not story.anonymous %}<a href="{{ story.user.profile.get_absolute_url }}">{% endif %}{{ story.get_author|upper }}{% if not story.anonymous %}</a>{% endif %}
+                    <br/>
+                    <strong>{% trans "Date" %}</strong>: {{ story.created }}
+                </div>
+            </div>
+        </section>
+    </div>
+{% empty %}
+  {% trans "No hay en el listado" %}
+{% endfor %}

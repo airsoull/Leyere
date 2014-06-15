@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+	{% trans "Profile" %}
+{% endblock title %}
+{% block content %}
+
+	<div class="panel panel-default  animated fadeInDown animation-delay-8">
+        <div class="panel-body">
+            {% if object.photo %}
+            	<img src="{{ object.image_avatar_large_url }}" alt="{{ object.user.username }}" class="alignleft imageborder">
+            {% endif %}
+            <p class="no-margin-top">
+            	<strong>{% trans "Author" %}:</strong> {{ object.user.username }} <br/>
+                <strong>{% trans "Password" %}:</strong> <a href="{% url 'password_change' %}">{% trans "Update" %}</a> <br/>
+            	<strong>{% trans "Location" %}:</strong> {{ object.location }} <br/>
+            	<strong>{% trans "About" %}:</strong> {{ object.about }} <br/> <br/>
+                <strong><a href="{% url 'story_by_user' %}">{% trans "Listado De Historias" %}</a></strong> <br/>
+                <strong><a href="{% url 'story_favorite_by_user' %}">{% trans "Listado de historias favoritas" %}</a></strong><br/>
+                <strong><a href="{{ object.get_absolute_url }}">{% trans "Your Profile" %}</a></strong>
+            </p>
+            <div class="clearfix"></div>
+            <hr>
+            <a href="{% url 'profile_edit_view' %}" class="btn btn-primary btn-lg pull-right">{% trans "Modificar" %}</a>
+        </div>
+    </div>
+
+{% endblock content %}

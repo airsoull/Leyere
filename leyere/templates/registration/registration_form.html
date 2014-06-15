@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load bootstrap %}
+
+{% block title %}
+	{% trans "Register" %}
+{% endblock title %}
+
+{% block title_page %}
+	{% trans 'Register' %}
+{% endblock title_page %}
+
+{% block content %}
+<ul class="nav nav-tabs">
+    <li ><a href="{% url 'auth_login' %}">{% trans "Inicia sesión" %}</a></li>
+    <li ><a href="{% url 'registration_register' %}">{% trans "Registro" %}</a></li>
+    <li ><a href="{% url 'auth_password_reset' %}">{% trans "Recuperar contraseña" %}</a></li>
+</ul>
+<br/>
+<form action="" method="post">
+	{% csrf_token %}
+	{{ form|bootstrap }}
+	<input type="submit" value="{% trans "Register" %}" class="btn btn-primary btn-form marg-right5">
+</form>
+{% endblock content %}

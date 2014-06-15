@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+	{% include "stories/story_list_all.html" with stories=object_list.all %}
+{% endblock content %}

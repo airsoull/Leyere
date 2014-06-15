@@ -1,0 +1,8 @@
+{% load i18n %}
+{% for tale in object_list %}
+  <a href="{{ tale.get_absolute_url }}">{{ tale.name }}</a> - {% if tale.anonymous %}
+    {% trans "Anonymous" %}
+    {% else %}
+    {{ tale.user }}
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+    {% trans "Listado de" %} {{ user.username }}
+{% endblock title %}
+
+{% block content %}
+	<div class="list-group">
+	{% for story in object_list %}
+		<div class="list-group-item">
+        	<h3><a href="{{ story.get_absolute_url }}">{{ story.name }}</a></h3>
+        	<a href="{% url 'story_update_view' story.pk %}" class="btn btn-primary pull-right">{% trans "Modificar" %}</a>
+        	<p>
+        		{{ story.description }}
+        	</p>
+    	</div>
+        <br/>
+	{% endfor %} 
+	</div>
+
+
+	{% if is_paginated %}
+<section>
+    <ul class="pagination">
+    	{% if page_obj.has_previous %}
+        <li><a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+        {% endif %}
+        {% for page in page_obj.paginator.page_range %}
+			{% ifequal page page_obj.number %}
+				<li class="active"><a href="{{ request.path }}?page={{ page }}">{{ page }}</a></li>
+			{% else %}
+				<li><a href="{{ request.path }}?page={{ page }}">{{ page }}</a></li>
+			{% endifequal %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+        <li><a href="{{ request.path }}?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+        {% endif %}
+    </ul>
+</section>
+{% endif %}
+{% endblock content %}

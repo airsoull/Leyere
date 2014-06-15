@@ -1,0 +1,5 @@
+-r requirements.txt
+django-debug-toolbar==1.0.1
+bpython==0.12
+pytz==2014.2
+Whoosh==2.6.0

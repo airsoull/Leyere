@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load profile_latest_stories %}
+
+{% block title %}
+	{{ object.user.username }} {% trans "Detail" %}
+{% endblock title %}
+
+{% block content %}
+	<div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <section>
+                    	{% if object.photo %}
+                    		<a href="{{ object.photo.url }}" data-lightbox="captions" title="{% trans "Author" %} {{ object.user.username }}">
+                    			<img src="{{ object.image_avatar_large_url }}" alt="{{ object.user.username }}" class="img-responsive imageborder">
+                    		</a>
+                    	{% endif %}
+                        
+                    </section>
+                    {% comment %}
+                    <section>
+                        <h3 class="section-title">Update your status</h3>
+                        <form role="form">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-block">Update</button>
+                        </form>
+                        <hr>
+                        <a href="#" class="btn btn-block btn-warning">Edit your profile</a>
+                    </section>
+                    {% endcomment %}
+                </div>
+                <div class="col-md-8">
+                    <section>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading"><i class="fa fa-user"></i> {% trans "General Information" %}</div>
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th>{% trans "Author" %}</th>
+                                    <td>{{ object.user.username }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{% trans "Location" %}</th>
+                                    <td>{{ object.location }}</td>
+                                </tr>
+                                <tr>
+                                    <th>{% trans "About" %}</th>
+                                    <td>{{ object.about|linebreaks }}</td>
+                                </tr>
+                            </tbody></table>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="section-title">{% trans "Latest Stories" %}</h2>
+                        {% profile_latest_stories profile=object %}
+                    </section>
+                </div>
+            </div>
+        </div>
+{% endblock content %}

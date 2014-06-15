@@ -1,0 +1,1 @@
+{{ contact.get_kind_display }} - Contacto

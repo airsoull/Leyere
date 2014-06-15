@@ -1,0 +1,18 @@
+{% load comments i18n bootstrap %}
+
+<form action="{% comment_form_target %}?next={% if next %}{{ next }}{% else %}{{ object.get_absolute_url }}{% endif %}" method="post">
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{{ object.get_absolute_url }}{% endif %}" />
+  
+  {{ form.comment|bootstrap }}
+  {{ form.content_type }}
+  {{ form.object_pk }}
+  {{ form.timestamp }}
+  {{ form.security_hash }}
+  {{ form.parent }}
+
+
+  <p class="submit">
+    <input type="submit" name="post" class="btn btn-primary btn-lg pull-right" value="{% trans "Post" %}" />
+  </p>
+</form>

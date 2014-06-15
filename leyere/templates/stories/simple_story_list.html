@@ -1,0 +1,29 @@
+{% load i18n %}
+
+{% for story in stories %}
+	<div class="list-group-item">
+		<div class="row">
+			{% if not story.anonymous %}
+			{% if story.user.profile.photo %}
+				<div class="col-lg-3">
+					<a href="{{ story.user.profile.get_absolute_url }}">
+						<img src="{{ story.user.profile.image_avatar_url }}" alt="{{ story.user.username }}"/>
+					</a>
+				</div>
+			{% endif %}
+			{% endif %}
+			
+			<div class="col-lg-9">
+        		<h3><a href="{{ story.get_absolute_url }}">{{ story.name }}</a></h3>
+        		<a href="{{ story.category.get_absolute_url }}">{{ story.category.name }}</a>
+        		<p>
+        			{{ story.description }}
+        		</p>
+        	</div>
+		</div>
+		
+    </div>
+    <br/>
+{% empty %}
+	{% trans "No hay" %}
+{% endfor %}

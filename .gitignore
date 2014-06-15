@@ -1,0 +1,10 @@
+*.pyc
+db.sqlite3
+*.sublime*
+.env
+mediafiles/
+media/
+staticfiles/
+static/
+*.DS_Store
+whoosh_index/

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+	{% trans "Registro completo" %}
+{% endblock title %}
+
+{% block title_page %}
+	{% trans 'Registro completo' %}
+{% endblock title_page %}
+
+{% block content %}
+<ul class="nav nav-tabs">
+    <li ><a href="{% url 'auth_login' %}">{% trans "Inicia sesión" %}</a></li>
+    <li ><a href="{% url 'registration_register' %}">{% trans "Registro" %}</a></li>
+    <li ><a href="{% url 'auth_password_reset' %}">{% trans "Recuperar contraseña" %}</a></li>
+</ul>
+<br/>
+<div class="alert alert-info">{% trans "Gracias por su registro. Se le ha enviado un email para verificar su cuenta" %}</div>
+{% endblock content %}

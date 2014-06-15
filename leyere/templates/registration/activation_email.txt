@@ -1,0 +1,5 @@
+Para activar su cuenta, debe dirigirse al siguiente link:
+
+http://{{ site.domain }}{% url "registration_activate" activation_key=activation_key %}
+
+El registro tiene un expiración de {{expiration_days}} días.

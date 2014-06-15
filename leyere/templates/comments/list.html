@@ -1,0 +1,36 @@
+{% load threadedcomments_tags %}
+{% load i18n %}
+
+<section>
+    {% for comment in comment_list|fill_tree|annotate_tree|dictsortreversed:"submit_date" %}
+    {% if not comment.parent_id %}
+    <ul class="list-unstyled">
+    {% else %}
+    <ul class="list-unstyled sub-comments">
+    {% endif %}
+        <li class="comment" id="c{{ comment.id }}">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    {% if comment.user.profile.file %}
+                    <a href="{{ comment.user.profile.get_absolute_url }}">
+                    <img src="{{ comment.user.profile.image_avatar_url }}" alt="avatar-{{ comment.user.username }}" class="imageborder alignleft" style="width: 100px; height: 100px;"/></a>
+                    {% endif %}
+                    <p>{{ comment.comment|linebreaks }}</p>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-lg-10 col-md-9 col-sm-8">
+                            <i class="fa fa-user"> </i> <a href="{{ comment.user.profile.get_absolute_url }}">{{ comment.user.username }}</a> <i class="fa fa-clock-o"></i> {{ comment.submit_date }}
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4">
+                            {% comment %}
+                                <a href="#" class="pull-right">Reply</a>
+                            {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    {% endfor %}
+</section>

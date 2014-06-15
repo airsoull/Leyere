@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}
+	{% trans "Contacto" %}
+{% endblock title %}
+{% block content %}
+{% if messages %}
+	<div class="alert alert-success">
+		{% for message in messages %}
+    		{{ message }}
+    	{% endfor %}
+	</div>
+{% endif %}
+{% include "contacts/ajax/contact_form.html" %}
+{% endblock content %}

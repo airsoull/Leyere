@@ -1,0 +1,7 @@
+Usuario: {{ contact.email }}
+
+Tipo de problema: {{ contact.get_kind_display }}
+
+Duda:
+
+{{ contact.body }}

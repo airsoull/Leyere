@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+	{% trans "Activation Complete" %}
+{% endblock title %}
+
+{% block title_page %}
+  {% trans 'Activación de cuenta completa!' %}
+{% endblock title_page %}
+
+{% block content %}
+<ul class="nav nav-tabs">
+    <li ><a href="{% url 'auth_login' %}">{% trans "Inicia sesión" %}</a></li>
+    <li ><a href="{% url 'registration_register' %}">{% trans "Registro" %}</a></li>
+    <li ><a href="{% url 'auth_password_reset' %}">{% trans "Recuperar contraseña" %}</a></li>
+</ul>
+<br/>
+<div class="alert alert-info"><strong>{% trans "Cuenta correctamente activada" %}</strong></div>
+{% endblock content %}

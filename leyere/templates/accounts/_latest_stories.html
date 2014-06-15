@@ -1,0 +1,8 @@
+<div class="list-group">
+	{% for story in stories %}
+		<a href="{{ story.get_absolute_url }}" class="list-group-item">
+        	<h3>{{ story.name }}</h3>
+        	<p>{{ story.description }}</p>
+    	</a>
+	{% endfor %} 
+</div>
