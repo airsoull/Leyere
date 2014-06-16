@@ -1,7 +1,8 @@
 import settings
 from django.conf.urls import patterns, url, include
-
 from django.contrib import admin
+
+from sitemaps import sitemaps
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -16,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^activity/', include('actstream.urls')),
     url(r'^articles/comments/', include('django.contrib.comments.urls')),
     url(r'^search/', include('search.urls')),
+    # url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}, name='sitemap'),
     url(r'^admin/', include(admin.site.urls)),
 )
 
