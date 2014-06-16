@@ -35,7 +35,7 @@
         <header id="header" class="hidden-xs">
             <div class="container">
                 <div id="header-title">
-                    <h2 class="animated fadeInDown"><a href="index.html">{{ current_site.name }}</a></h2>
+                    <h2 class="animated fadeInDown"><a href="{% url 'home' %}">{{ current_site.name }}</a></h2>
                     
                     <p class="animated fadeInLeft">&nbsp;</p>
                     
@@ -84,7 +84,7 @@
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="index.html">LEYERE</a>
+                    <a class="navbar-brand visible-xs" href="{% url 'home' %}">{{ current_site.name }}</a>
 
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-mind-collapse">
                         <span class="sr-only">Menú</span>
