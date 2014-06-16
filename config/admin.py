@@ -7,7 +7,7 @@ class SeoAdmin(admin.ModelAdmin):
     actions_on_top = False
 
     def has_add_permission(self, request):
-        return False if Seo.objects.count() > 0 else True 
+        return False if Seo.objects.count() > 0 else True
 
 admin.site.register(Seo, SeoAdmin)
 admin.site.register(PageNotFound)
