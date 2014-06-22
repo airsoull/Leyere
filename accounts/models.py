@@ -78,7 +78,7 @@ def send_email_by_comment(sender, instance, created, **kwargs):
         from django.template.loader import render_to_string
         subject = _('Nuevo Comentario') + ' - ' + 'Leyere.com' 
         from_address = settings.EMAIL_DEFAULT
-        to_address = instance.user_email
+        to_address = instance.follow_object.user.email
         content = render_to_string("comments/email/email_comment.txt", {'comment': instance})
         try:
             from mailqueue.models import MailerMessage
