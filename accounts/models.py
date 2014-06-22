@@ -65,7 +65,7 @@ def send_email_by_favorite_story(sender, instance, created, **kwargs):
             msg.to_address = to_address
             msg.from_address = from_address
             msg.content = content
-            msg.app = 'Comment'
+            msg.app = 'Favorite Story'
             msg.send_mail()
         except ImportError:
             from django.core.mail import EmailMultiAlternatives
