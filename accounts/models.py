@@ -56,7 +56,7 @@ def send_email_by_favorite_story(sender, instance, created, **kwargs):
         from django.template.loader import render_to_string
         subject = _('Han marcado como favorita una de tus historias') + ' - ' + 'Leyere.com'
         from_address = settings.EMAIL_DEFAULT
-        to_address = instance.user.email
+        to_address = instance.follow_object.user.email
         content = render_to_string("actstream/email/email_favorite.txt", {'favorite': instance})
         try:
             from mailqueue.models import MailerMessage
@@ -78,7 +78,7 @@ def send_email_by_comment(sender, instance, created, **kwargs):
         from django.template.loader import render_to_string
         subject = _('Nuevo Comentario') + ' - ' + 'Leyere.com' 
         from_address = settings.EMAIL_DEFAULT
-        to_address = instance.follow_object.user.email
+        to_address = instance.user_email
         content = render_to_string("comments/email/email_comment.txt", {'comment': instance})
         try:
             from mailqueue.models import MailerMessage
