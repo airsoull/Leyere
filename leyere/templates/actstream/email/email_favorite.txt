@@ -1,0 +1,2 @@
+{% load i18n %}
+{% blocktrans %}El usuario{% endblocktrans %} <a href="http://www.leyere.com{{ favorite.user.profile.get_absolute_url }}">{{ favorite.user.username }}</a> {% blocktrans %}ha marcado como favorito la historia{% endblocktrans %}: <a href="http://www.leyere.com{{ favorite.follow_object.get_absolute_url }}">{{ favorite.follow_object.name }}</a>

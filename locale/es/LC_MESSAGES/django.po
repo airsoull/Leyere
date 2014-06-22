@@ -2,48 +2,52 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-12 17:24-0400\n"
-"PO-Revision-Date: 2014-05-12 15:23-0443\n"
+"POT-Creation-Date: 2014-06-22 15:32-0400\n"
+"PO-Revision-Date: 2014-06-22 15:35-0443\n"
 "Last-Translator:   <q@q.cl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.7.4\n"
 
-#: accounts/models.py:21 stories/models.py:13
+#: accounts/models.py:25 stories/models.py:17
 msgid "Slug"
 msgstr ""
 
-#: accounts/models.py:22
+#: accounts/models.py:26
 msgid "Photo"
 msgstr ""
 
-#: accounts/models.py:23
+#: accounts/models.py:27
 msgid "Country"
 msgstr ""
 
-#: accounts/models.py:24 queleeras/templates/accounts/profile_detail.html:17
-#: queleeras/templates/accounts/profile_detail_public.html:47
+#: accounts/models.py:28 leyere/templates/accounts/profile_detail.html:17
+#: leyere/templates/accounts/profile_detail_public.html:47
 msgid "Location"
 msgstr ""
 
-#: accounts/models.py:25 queleeras/templates/accounts/profile_detail.html:18
-#: queleeras/templates/accounts/profile_detail_public.html:51
+#: accounts/models.py:29 leyere/templates/accounts/profile_detail.html:18
+#: leyere/templates/accounts/profile_detail_public.html:51
 msgid "About"
 msgstr "Acerca de ti"
 
-#: accounts/models.py:25 stories/models.py:14 stories/models.py:42
+#: accounts/models.py:29 stories/models.py:19 stories/models.py:53
 msgid "Maximum 150 Characters"
 msgstr "Máximo 150 caracteres "
+
+#: accounts/models.py:57
+msgid "Nuevo Comentario"
+msgstr ""
 
 #: accounts/views.py:43
 msgid "Sus Datos Se Han Actualizado Con Éxito"
@@ -51,9 +55,9 @@ msgstr ""
 
 #: config/models.py:7
 msgid "Title"
-msgstr ""
+msgstr "Titulo"
 
-#: config/models.py:8 stories/models.py:14 stories/models.py:42
+#: config/models.py:8 stories/models.py:19 stories/models.py:53
 msgid "Description"
 msgstr "Descripción"
 
@@ -61,11 +65,11 @@ msgstr "Descripción"
 msgid "SEO"
 msgstr ""
 
-#: config/models.py:18 queleeras/templates/accounts/profile_detail.html:15
-#: queleeras/templates/accounts/profile_detail_public.html:15
-#: queleeras/templates/accounts/profile_detail_public.html:43
-#: queleeras/templates/stories/story_detail.html:9
-#: queleeras/templates/stories/story_list_all.html:12
+#: config/models.py:18 leyere/templates/accounts/profile_detail.html:15
+#: leyere/templates/accounts/profile_detail_public.html:15
+#: leyere/templates/accounts/profile_detail_public.html:43
+#: leyere/templates/stories/story_detail.html:14
+#: leyere/templates/stories/story_list_all.html:12
 msgid "Author"
 msgstr "Autor"
 
@@ -73,11 +77,11 @@ msgstr "Autor"
 msgid "Url"
 msgstr ""
 
-#: config/models.py:20
+#: config/models.py:20 stories/models.py:16
 msgid "Image"
 msgstr ""
 
-#: config/models.py:21 stories/models.py:15 stories/models.py:48
+#: config/models.py:21 stories/models.py:20 stories/models.py:59
 msgid "Active"
 msgstr "Activo"
 
@@ -113,321 +117,402 @@ msgstr "Enviar"
 msgid "Su Consulta Se Ha Enviado Con Éxito"
 msgstr ""
 
-#: queleeras/settings.py:131
+#: leyere/settings.py:147
 msgid "Español"
 msgstr ""
 
-#: queleeras/templates/base.html:52
+#: leyere/templates/base.html:76
 msgid "Search"
 msgstr ""
 
-#: queleeras/templates/base.html:77
-#: queleeras/templates/stories/story_detail.html:19
+#: leyere/templates/base.html:103
+#: leyere/templates/stories/story_detail.html:24
 msgid "Home"
 msgstr ""
 
-#: queleeras/templates/base.html:81 stories/models.py:35
+#: leyere/templates/base.html:107 stories/models.py:46
 msgid "Categories"
 msgstr "Categorías"
 
-#: queleeras/templates/base.html:89
+#: leyere/templates/base.html:115
 msgid "Random"
 msgstr "Aleatorio"
 
-#: queleeras/templates/base.html:92
+#: leyere/templates/base.html:118
 msgid "Contact"
 msgstr "Contacto"
 
-#: queleeras/templates/base.html:102 queleeras/templates/base.html.py:127
-#: queleeras/templates/registration/login.html:6
-#: queleeras/templates/registration/login.html:10
-#: queleeras/templates/registration/login.html:23
+#: leyere/templates/base.html:127
+#, fuzzy
+msgid "Registrarse"
+msgstr "Registro"
+
+#: leyere/templates/base.html:130 leyere/templates/base.html.py:155
+#: leyere/templates/registration/login.html:6
+#: leyere/templates/registration/login.html:10
+#: leyere/templates/registration/login.html:23
 msgid "Login"
 msgstr ""
 
-#: queleeras/templates/base.html:106
+#: leyere/templates/base.html:134
 msgid "Login Form"
 msgstr "Formulario De Login"
 
-#: queleeras/templates/base.html:137
-#: queleeras/templates/stories/story_form.html:6
+#: leyere/templates/base.html:165 leyere/templates/stories/story_form.html:6
 msgid "Publish"
 msgstr "Publicar"
 
-#: queleeras/templates/base.html:147
-#: queleeras/templates/accounts/profile_detail.html:5
+#: leyere/templates/base.html:175
+#: leyere/templates/accounts/profile_detail.html:5
 msgid "Profile"
 msgstr "Perfil"
 
-#: queleeras/templates/base.html:147
+#: leyere/templates/base.html:175
 msgid "Logout"
 msgstr "Cerrar Sesión"
 
-#: queleeras/templates/accounts/profile_detail.html:16
+#: leyere/templates/accounts/profile_detail.html:16
 msgid "Password"
 msgstr "Contraseña"
 
-#: queleeras/templates/accounts/profile_detail.html:16
-#: queleeras/templates/accounts/profile_form.html:20
-#: queleeras/templates/registration/password_change_form.html:32
+#: leyere/templates/accounts/profile_detail.html:16
+#: leyere/templates/accounts/profile_form.html:20
+#: leyere/templates/registration/password_change_form.html:32
 msgid "Update"
 msgstr "Actualizar"
 
-#: queleeras/templates/accounts/profile_detail.html:19
+#: leyere/templates/accounts/profile_detail.html:19
 msgid "Listado De Historias"
 msgstr ""
 
-#: queleeras/templates/accounts/profile_detail.html:20
+#: leyere/templates/accounts/profile_detail.html:20
+msgid "Listado de historias favoritas"
+msgstr ""
+
+#: leyere/templates/accounts/profile_detail.html:21
 msgid "Your Profile"
 msgstr "Perfil"
 
-#: queleeras/templates/accounts/profile_detail.html:24
-#: queleeras/templates/accounts/tale_user_list.html:13
+#: leyere/templates/accounts/profile_detail.html:25
+#: leyere/templates/accounts/tale_user_list.html:13
 msgid "Modificar"
 msgstr ""
 
-#: queleeras/templates/accounts/profile_detail_public.html:6
+#: leyere/templates/accounts/profile_detail_public.html:6
 msgid "Detail"
 msgstr "Detalle"
 
-#: queleeras/templates/accounts/profile_detail_public.html:39
+#: leyere/templates/accounts/profile_detail_public.html:39
 msgid "General Information"
 msgstr "Información General"
 
-#: queleeras/templates/accounts/profile_detail_public.html:59
+#: leyere/templates/accounts/profile_detail_public.html:59
 msgid "Latest Stories"
 msgstr "Últimas historias"
 
-#: queleeras/templates/accounts/profile_form.html:6
+#: leyere/templates/accounts/profile_favorite_story.html:5
+msgid "Historias Favoritas"
+msgstr ""
+
+#: leyere/templates/accounts/profile_favorite_story.html:38
+msgid "No hay historias favoritas =("
+msgstr ""
+
+#: leyere/templates/accounts/profile_form.html:6
 msgid "Actualizar datos"
 msgstr ""
 
-#: queleeras/templates/accounts/tale_user_list.html:5
+#: leyere/templates/accounts/tale_user_list.html:5
 msgid "Listado de"
 msgstr ""
 
-#: queleeras/templates/contacts/contact_form.html:4
+#: leyere/templates/comments/form.html:16
+msgid "Post"
+msgstr ""
+
+#: leyere/templates/comments/preview.html:4
+msgid "Preview your comment"
+msgstr ""
+
+#: leyere/templates/comments/email/email_comment.txt:3
+msgid "Ha recibido un nuevo comentario para"
+msgstr ""
+
+#: leyere/templates/comments/email/email_comment.txt:5
+msgid "Para revisar el comentario vaya al siguiente link:"
+msgstr ""
+
+#: leyere/templates/comments/email/email_comment.txt:5
+msgid "comentario"
+msgstr ""
+
+#: leyere/templates/contacts/contact_form.html:4
 msgid "Contacto"
 msgstr ""
 
-#: queleeras/templates/contacts/ajax/contact_form.html:6
+#: leyere/templates/contacts/ajax/contact_form.html:6
 msgid "Contactar"
 msgstr ""
 
-#: queleeras/templates/registration/activation_complete.html:5
+#: leyere/templates/home/home.html:6
+msgid "Últimas Historias"
+msgstr ""
+
+#: leyere/templates/home/home.html:10
+msgid "Últimas Historias Anónimas"
+msgstr ""
+
+#: leyere/templates/registration/activation_complete.html:5
 msgid "Activation Complete"
 msgstr "Activación Completa"
 
-#: queleeras/templates/registration/activation_complete.html:9
+#: leyere/templates/registration/activation_complete.html:9
 #, fuzzy
 msgid "Activación de cuenta completa!"
 msgstr "Activación Completa"
 
-#: queleeras/templates/registration/activation_complete.html:14
-#: queleeras/templates/registration/login.html:15
-#: queleeras/templates/registration/logout.html:14
-#: queleeras/templates/registration/password_change_done.html:14
-#: queleeras/templates/registration/password_change_form.html:15
-#: queleeras/templates/registration/password_reset_complete.html:14
-#: queleeras/templates/registration/password_reset_confirm.html:15
-#: queleeras/templates/registration/password_reset_done.html:14
-#: queleeras/templates/registration/password_reset_form.html:15
-#: queleeras/templates/registration/registration_complete.html:14
-#: queleeras/templates/registration/registration_form.html:15
+#: leyere/templates/registration/activation_complete.html:14
+#: leyere/templates/registration/login.html:15
+#: leyere/templates/registration/logout.html:14
+#: leyere/templates/registration/password_change_done.html:14
+#: leyere/templates/registration/password_change_form.html:15
+#: leyere/templates/registration/password_reset_complete.html:14
+#: leyere/templates/registration/password_reset_confirm.html:15
+#: leyere/templates/registration/password_reset_done.html:14
+#: leyere/templates/registration/password_reset_form.html:15
+#: leyere/templates/registration/registration_complete.html:14
+#: leyere/templates/registration/registration_form.html:15
 msgid "Inicia sesión"
 msgstr ""
 
-#: queleeras/templates/registration/activation_complete.html:15
-#: queleeras/templates/registration/login.html:16
-#: queleeras/templates/registration/logout.html:15
-#: queleeras/templates/registration/password_change_done.html:15
-#: queleeras/templates/registration/password_change_form.html:16
-#: queleeras/templates/registration/password_reset_complete.html:15
-#: queleeras/templates/registration/password_reset_confirm.html:16
-#: queleeras/templates/registration/password_reset_done.html:15
-#: queleeras/templates/registration/password_reset_form.html:16
-#: queleeras/templates/registration/registration_complete.html:15
-#: queleeras/templates/registration/registration_form.html:16
+#: leyere/templates/registration/activation_complete.html:15
+#: leyere/templates/registration/login.html:16
+#: leyere/templates/registration/logout.html:15
+#: leyere/templates/registration/password_change_done.html:15
+#: leyere/templates/registration/password_change_form.html:16
+#: leyere/templates/registration/password_reset_complete.html:15
+#: leyere/templates/registration/password_reset_confirm.html:16
+#: leyere/templates/registration/password_reset_done.html:15
+#: leyere/templates/registration/password_reset_form.html:16
+#: leyere/templates/registration/registration_complete.html:15
+#: leyere/templates/registration/registration_form.html:16
 msgid "Registro"
 msgstr ""
 
-#: queleeras/templates/registration/activation_complete.html:16
-#: queleeras/templates/registration/login.html:17
-#: queleeras/templates/registration/logout.html:16
-#: queleeras/templates/registration/password_change_done.html:16
-#: queleeras/templates/registration/password_change_form.html:17
-#: queleeras/templates/registration/password_reset_complete.html:16
-#: queleeras/templates/registration/password_reset_confirm.html:17
-#: queleeras/templates/registration/password_reset_done.html:16
-#: queleeras/templates/registration/password_reset_form.html:17
-#: queleeras/templates/registration/registration_complete.html:16
-#: queleeras/templates/registration/registration_form.html:17
+#: leyere/templates/registration/activation_complete.html:16
+#: leyere/templates/registration/login.html:17
+#: leyere/templates/registration/logout.html:16
+#: leyere/templates/registration/password_change_done.html:16
+#: leyere/templates/registration/password_change_form.html:17
+#: leyere/templates/registration/password_reset_complete.html:16
+#: leyere/templates/registration/password_reset_confirm.html:17
+#: leyere/templates/registration/password_reset_done.html:16
+#: leyere/templates/registration/password_reset_form.html:17
+#: leyere/templates/registration/registration_complete.html:16
+#: leyere/templates/registration/registration_form.html:17
 msgid "Recuperar contraseña"
 msgstr ""
 
-#: queleeras/templates/registration/activation_complete.html:19
+#: leyere/templates/registration/activation_complete.html:19
 msgid "Cuenta correctamente activada"
 msgstr ""
 
-#: queleeras/templates/registration/logout.html:5
+#: leyere/templates/registration/logout.html:5
 msgid "Cerrar Sesión"
 msgstr ""
 
-#: queleeras/templates/registration/logout.html:9
+#: leyere/templates/registration/logout.html:9
 msgid "Sesión finalizada"
 msgstr ""
 
-#: queleeras/templates/registration/logout.html:19
+#: leyere/templates/registration/logout.html:19
 msgid "Se ha desconectado con éxito"
 msgstr ""
 
-#: queleeras/templates/registration/password_change_done.html:5
-#: queleeras/templates/registration/password_change_done.html:9
+#: leyere/templates/registration/password_change_done.html:5
+#: leyere/templates/registration/password_change_done.html:9
 msgid "Password change successful"
 msgstr "Contraseña Actualizada Correctamente"
 
-#: queleeras/templates/registration/password_change_done.html:19
+#: leyere/templates/registration/password_change_done.html:19
 msgid "Your password was changed."
 msgstr "Tú contraseña fue actualizada"
 
-#: queleeras/templates/registration/password_change_form.html:6
+#: leyere/templates/registration/password_change_form.html:6
 msgid "Cambio de contraseña"
 msgstr ""
 
-#: queleeras/templates/registration/password_change_form.html:10
+#: leyere/templates/registration/password_change_form.html:10
 msgid "Password change"
 msgstr "Cambio de contraseña"
 
-#: queleeras/templates/registration/password_change_form.html:23
+#: leyere/templates/registration/password_change_form.html:23
 msgid "Please correct the error below."
 msgstr "Por favor revisa el siguiente error"
 
-#: queleeras/templates/registration/password_change_form.html:23
+#: leyere/templates/registration/password_change_form.html:23
 msgid "Please correct the errors below."
 msgstr "Por favor revisa los siguientes errores"
 
-#: queleeras/templates/registration/password_change_form.html:27
+#: leyere/templates/registration/password_change_form.html:27
 msgid ""
-"Please enter your old password, for security's sake, and then enter your new "
-"password twice so we can verify you typed it in correctly."
+"Please enter your old password, for security's sake, and then enter your new"
+" password twice so we can verify you typed it in correctly."
 msgstr ""
 
-#: queleeras/templates/registration/password_reset_complete.html:5
-#: queleeras/templates/registration/password_reset_complete.html:9
+#: leyere/templates/registration/password_reset_complete.html:5
+#: leyere/templates/registration/password_reset_complete.html:9
 msgid "Password reset complete"
 msgstr ""
 
-#: queleeras/templates/registration/password_reset_complete.html:19
+#: leyere/templates/registration/password_reset_complete.html:19
 msgid "Your password has been set.  You may go ahead and log in now."
 msgstr ""
 
-#: queleeras/templates/registration/password_reset_complete.html:22
+#: leyere/templates/registration/password_reset_complete.html:22
 msgid "Log in"
 msgstr ""
 
-#: queleeras/templates/registration/password_reset_confirm.html:6
-#: queleeras/templates/registration/password_reset_confirm.html:10
+#: leyere/templates/registration/password_reset_confirm.html:6
+#: leyere/templates/registration/password_reset_confirm.html:10
 msgid "Validar cambio de contraseña"
 msgstr ""
 
-#: queleeras/templates/registration/password_reset_confirm.html:24
+#: leyere/templates/registration/password_reset_confirm.html:24
 msgid "Change Password"
 msgstr "Cambiar Contraseña"
 
-#: queleeras/templates/registration/password_reset_done.html:5
-#: queleeras/templates/registration/password_reset_done.html:9
+#: leyere/templates/registration/password_reset_done.html:5
+#: leyere/templates/registration/password_reset_done.html:9
 msgid "Verificación cuenta"
 msgstr ""
 
-#: queleeras/templates/registration/password_reset_done.html:19
+#: leyere/templates/registration/password_reset_done.html:19
 msgid ""
 "Se envió un email con un enlace para poder verificar su cambio de contraseña"
 msgstr ""
 
-#: queleeras/templates/registration/password_reset_form.html:6
-#: queleeras/templates/registration/password_reset_form.html:10
+#: leyere/templates/registration/password_reset_form.html:6
+#: leyere/templates/registration/password_reset_form.html:10
 msgid "Reiniciar Contraseña"
 msgstr ""
 
-#: queleeras/templates/registration/password_reset_form.html:23
+#: leyere/templates/registration/password_reset_form.html:23
 msgid "Reset my password"
 msgstr ""
 
-#: queleeras/templates/registration/registration_complete.html:5
-#: queleeras/templates/registration/registration_complete.html:9
+#: leyere/templates/registration/registration_complete.html:5
+#: leyere/templates/registration/registration_complete.html:9
 msgid "Registro completo"
 msgstr ""
 
-#: queleeras/templates/registration/registration_complete.html:19
+#: leyere/templates/registration/registration_complete.html:19
 msgid ""
 "Gracias por su registro. Se le ha enviado un email para verificar su cuenta"
 msgstr ""
 
-#: queleeras/templates/registration/registration_form.html:6
-#: queleeras/templates/registration/registration_form.html:10
-#: queleeras/templates/registration/registration_form.html:23
+#: leyere/templates/registration/registration_form.html:6
+#: leyere/templates/registration/registration_form.html:10
+#: leyere/templates/registration/registration_form.html:23
 msgid "Register"
 msgstr "Registro"
 
-#: queleeras/templates/stories/create_story_form.html:4
-#: queleeras/templates/stories/create_story_form.html:7
+#: leyere/templates/stories/create_story_form.html:4
+#: leyere/templates/stories/create_story_form.html:7
 msgid "Create"
 msgstr "Crear"
 
-#: queleeras/templates/stories/story_detail.html:11
-#: queleeras/templates/stories/story_list_all.html:14
+#: leyere/templates/stories/simple_story_list.html:28
+msgid "No hay"
+msgstr ""
+
+#: leyere/templates/stories/story_detail.html:16
+#: leyere/templates/stories/story_list_all.html:14
 msgid "Date"
 msgstr "Fecha"
 
-#: queleeras/templates/stories/story_detail.html:13 stories/models.py:45
+#: leyere/templates/stories/story_detail.html:18 stories/models.py:56
 msgid "Updated"
-msgstr "Actualizar"
+msgstr "Actualizado"
 
-#: queleeras/templates/stories/story_list.html:4
-#: queleeras/templates/stories/story_list.html:7
+#: leyere/templates/stories/story_detail.html:43
+msgid "Disminuir Letra"
+msgstr ""
+
+#: leyere/templates/stories/story_detail.html:44
+msgid "Letra Normal"
+msgstr ""
+
+#: leyere/templates/stories/story_detail.html:45
+msgid "Aumentar Letra"
+msgstr ""
+
+#: leyere/templates/stories/story_detail.html:90
+msgid "Comments"
+msgstr "Comentarios"
+
+#: leyere/templates/stories/story_list.html:6
+#: leyere/templates/stories/story_list.html:11
 msgid "Listado"
 msgstr ""
 
-#: queleeras/templates/stories/story_list_all.html:20
+#: leyere/templates/stories/story_list_all.html:20
 msgid "No hay en el listado"
 msgstr ""
 
-#: queleeras/templates/stories/tale_list_by_category.html:4
-#: stories/models.py:46 stories/models.py:56 stories/tests.py:38
+#: leyere/templates/stories/tale_list_by_category.html:4 stories/models.py:57
+#: stories/models.py:68 stories/tests.py:38
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: queleeras/templates/stories/update_story_form.html:4
-#: queleeras/templates/stories/update_story_form.html:7
+#: leyere/templates/stories/update_story_form.html:4
+#: leyere/templates/stories/update_story_form.html:7
 msgid "Actualizar"
 msgstr ""
 
-#: stories/models.py:12 stories/models.py:40
-msgid "Name"
-msgstr "Nombre"
-
-#: stories/models.py:34 stories/models.py:41
-#, fuzzy
+#: stories/admin.py:12 stories/admin.py:37 stories/models.py:45
+#: stories/models.py:52
 msgid "Category"
 msgstr "Categoría"
 
-#: stories/models.py:43
+#: stories/forms.py:20
+#, fuzzy
+msgid "Creado"
+msgstr "Creado"
+
+#: stories/forms.py:20
+msgid "Actualizado"
+msgstr ""
+
+#: stories/models.py:15 stories/models.py:51
+msgid "Name"
+msgstr "Nombre"
+
+#: stories/models.py:18
+msgid "Parent"
+msgstr ""
+
+#: stories/models.py:21
+msgid "Sort Order"
+msgstr ""
+
+#: stories/models.py:54
 msgid "Text"
 msgstr "Texto"
 
-#: stories/models.py:44
+#: stories/models.py:55
 msgid "Created"
 msgstr "Creado"
 
-#: stories/models.py:47
+#: stories/models.py:58
 msgid "Draft"
 msgstr "Borrador"
 
-#: stories/models.py:67
+#: stories/models.py:79
 msgid "Story"
 msgstr ""
 
-#: stories/models.py:68
+#: stories/models.py:80
 msgid "Stories"
 msgstr ""
 

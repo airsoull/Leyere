@@ -15,6 +15,7 @@ from django_countries.fields import CountryField
 from sorl.thumbnail import get_thumbnail
 from registration.signals import user_activated
 from threadedcomments.models import ThreadedComment
+from actstream.models import Follow
 
 from .conf import settings
 from stories.models import Story
@@ -49,12 +50,33 @@ class Profile(models.Model):
     def __unicode__(self):
         return self.user.username
 
+@receiver(post_save, sender=Follow, dispatch_uid='send_email_by_favorite_story')
+def send_email_by_favorite_story(sender, instance, created, **kwargs):
+    if created:
+        from django.template.loader import render_to_string
+        subject = _('Han marcado como favorita una de tus historias') + ' - ' + 'Leyere.com'
+        from_address = settings.EMAIL_DEFAULT
+        to_address = instance.user.email
+        content = render_to_string("actstream/email/email_favorite.txt", {'favorite': instance})
+        try:
+            from mailqueue.models import MailerMessage
+            msg = MailerMessage()
+            msg.subject = subject
+            msg.to_address = to_address
+            msg.from_address = from_address
+            msg.content = content
+            msg.app = 'Comment'
+            msg.send_mail()
+        except ImportError:
+            from django.core.mail import EmailMultiAlternatives
+            msg = EmailMultiAlternatives(subject, content, from_address, to_address)
+            msg.send()
 
 @receiver(post_save, sender=ThreadedComment, dispatch_uid='send_email_by_comment')
 def send_email_by_comment(sender, instance, created, **kwargs):
     if created:
         from django.template.loader import render_to_string
-        subject = _('Nuevo Comentario')
+        subject = _('Nuevo Comentario') + ' - ' + 'Leyere.com' 
         from_address = settings.EMAIL_DEFAULT
         to_address = instance.user_email
         content = render_to_string("comments/email/email_comment.txt", {'comment': instance})
@@ -71,7 +93,6 @@ def send_email_by_comment(sender, instance, created, **kwargs):
             from django.core.mail import EmailMultiAlternatives
             msg = EmailMultiAlternatives(subject, content, from_address, to_address)
             msg.send()
-
 
 @receiver(post_save, sender=User, dispatch_uid='create_profile_on_created_user')
 def create_profile_on_created_user(sender, instance, created, **kwargs):
