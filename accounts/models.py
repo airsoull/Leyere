@@ -29,6 +29,8 @@ class Profile(models.Model):
     location = models.CharField(_('Location'), max_length=140, blank=True)
     about = models.TextField(_('About'), blank=True, validators=[MaxLengthValidator(150)], help_text=_('Maximum 150 Characters'))
     follows = generic.GenericRelation('actstream.Follow')
+    email_favorite_story = models.BooleanField(_('Send Email By Favorite Story'), default=True)
+    email_comment = models.BooleanField(_('Send Email By Comment'), default=True)
 
     def liked_stories(self):
         content_type = ContentType.objects.get_for_model(Story)
@@ -49,6 +51,7 @@ class Profile(models.Model):
 
     def __unicode__(self):
         return self.user.username
+
 
 @receiver(post_save, sender=Follow, dispatch_uid='send_email_by_favorite_story')
 def send_email_by_favorite_story(sender, instance, created, **kwargs):

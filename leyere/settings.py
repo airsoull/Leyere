@@ -16,7 +16,7 @@ ADMINS = (
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', 'y^fl$vj-u(4w-=*!i2kdl%^5un=_vntisz-%c7)woovwn=2!^r' )
+SECRET_KEY = 'y^fl$vj-u(4w-=*!i2kdl%^5un=_vntisz-%c7)woovwn=2!^r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
