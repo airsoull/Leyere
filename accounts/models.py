@@ -9,7 +9,6 @@ from django.core.urlresolvers import reverse
 from django.core.validators import MaxLengthValidator
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
-# from django.contrib.comments.models import Comment
 
 from django_countries.fields import CountryField
 from sorl.thumbnail import get_thumbnail
@@ -24,7 +23,7 @@ from stories.models import Story
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='profile')
     user_slug = models.SlugField(_('Slug'), editable=False, null=True)
-    photo = models.ImageField(_('Photo'), blank=False, upload_to='accounts/profile/avatar', null=True)
+    photo = models.ImageField(_('Photo'), blank=True, upload_to='accounts/profile/avatar', null=True)
     country = CountryField(_('Country'), blank=True)
     location = models.CharField(_('Location'), max_length=140, blank=True)
     about = models.TextField(_('About'), blank=True, validators=[MaxLengthValidator(150)], help_text=_('Maximum 150 Characters'))
@@ -78,24 +77,25 @@ def send_email_by_favorite_story(sender, instance, created, **kwargs):
 @receiver(post_save, sender=ThreadedComment, dispatch_uid='send_email_by_comment')
 def send_email_by_comment(sender, instance, created, **kwargs):
     if created:
-        from django.template.loader import render_to_string
-        subject = _('Nuevo Comentario') + ' - ' + 'Leyere.com' 
-        from_address = settings.EMAIL_DEFAULT
-        to_address = instance.user_email
-        content = render_to_string("comments/email/email_comment.txt", {'comment': instance})
-        try:
-            from mailqueue.models import MailerMessage
-            msg = MailerMessage()
-            msg.subject = subject
-            msg.to_address = to_address
-            msg.from_address = from_address
-            msg.content = content
-            msg.app = 'Comment'
-            msg.send_mail()
-        except ImportError:
-            from django.core.mail import EmailMultiAlternatives
-            msg = EmailMultiAlternatives(subject, content, from_address, to_address)
-            msg.send()
+        if instance.user.profile.email_comment:
+            from django.template.loader import render_to_string
+            subject = _('Nuevo Comentario') + ' - ' + 'Leyere.com' 
+            from_address = settings.EMAIL_DEFAULT
+            to_address = instance.user_email
+            content = render_to_string("comments/email/email_comment.txt", {'comment': instance})
+            try:
+                from mailqueue.models import MailerMessage
+                msg = MailerMessage()
+                msg.subject = subject
+                msg.to_address = to_address
+                msg.from_address = from_address
+                msg.content = content
+                msg.app = 'Comment'
+                msg.send_mail()
+            except ImportError:
+                from django.core.mail import EmailMultiAlternatives
+                msg = EmailMultiAlternatives(subject, content, from_address, to_address)
+                msg.send()
 
 @receiver(post_save, sender=User, dispatch_uid='create_profile_on_created_user')
 def create_profile_on_created_user(sender, instance, created, **kwargs):
