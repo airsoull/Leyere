@@ -12,7 +12,6 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('accounts.urls')),
     url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^social/', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^rosetta/', include('rosetta.urls')),
     # url(r'^search/', include('haystack.urls')),
     url(r'^activity/', include('actstream.urls')),
     url(r'^articles/comments/', include('django.contrib.comments.urls')),
@@ -23,6 +22,7 @@ urlpatterns = patterns('',
 
 if settings.DEBUG:
     urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT})
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.MEDIA_ROOT}),
+        url(r'^rosetta/', include('rosetta.urls')),
     )
