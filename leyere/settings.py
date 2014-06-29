@@ -61,6 +61,7 @@ INSTALLED_APPS = (
     'threadedcomments',
     'django.contrib.comments',
     'sekizai',
+    # 'pipeline',
 
     'django.contrib.admin',  
 )
@@ -72,8 +73,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'htmlmin.middleware.HtmlMinifyMiddleware',
-    'htmlmin.middleware.MarkRequestMiddleware',
+    # 'htmlmin.middleware.HtmlMinifyMiddleware',
+    # 'htmlmin.middleware.MarkRequestMiddleware',
 )
 
 ROOT_URLCONF = 'leyere.urls'
@@ -190,5 +191,7 @@ PROFILE_LARGE_IMAGE_AVATAR_SIZE = '360x360'
 
 COMMENTS_APP = 'threadedcomments'
 
-HTML_MINIFY = True
-EXCLUDE_FROM_MINIFYING = ('^admin/',)
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+# HTML_MINIFY = True
+# EXCLUDE_FROM_MINIFYING = ('^admin/',)
