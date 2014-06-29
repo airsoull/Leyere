@@ -7,9 +7,11 @@ from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 
+from registration.backends.default.views import RegistrationView
+from registration.forms import RegistrationFormUniqueEmail
+
 from .models import Profile
 from .forms import ProfileForm
-
 from stories.models import Story
 
 
@@ -82,3 +84,9 @@ class StoryFavoriteByUser(DetailView):
         return profile
 
 story_favorite_by_user = StoryFavoriteByUser.as_view()
+
+
+class RegistrationView(RegistrationView):
+    form_class = RegistrationFormUniqueEmail
+
+registration_view = RegistrationView.as_view()

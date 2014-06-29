@@ -8,6 +8,7 @@ urlpatterns = patterns('accounts.views',
     url(r'tales/$', 'story_by_user', name='story_by_user'),
     url(r'detail/(?P<slug>\w+)/$', 'author_view_detail', name='author_view_detail'),
     url(r'favorite/$', 'story_favorite_by_user', name='story_favorite_by_user'),
+    url(r'register/$', 'registration_view', name='registration_register')
 )
 
 urlpatterns += patterns('',

@@ -133,6 +133,7 @@ MANAGERS = (
 )
 
 EMAIL_DEFAULT = os.getenv('EMAIL_DEFAULT', 'no-reply@example.com')
+DEFAULT_FROM_EMAIL = EMAIL_DEFAULT
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

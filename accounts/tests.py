@@ -3,9 +3,9 @@ from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 from django.contrib.comments.models import Comment
 
-from .forms import ProfileForm
-# from .models import Profile
+from registration.forms import RegistrationFormUniqueEmail
 
+from .forms import ProfileForm
 from stories.tests import create_user, create_story, create_category
 
 
@@ -139,6 +139,18 @@ class StoryFavoriteView(TestCase):
         self.assertIn('user', response.context)
         self.assertEqual(self.user.profile, response.context['object'])
         self.assertTemplateUsed(response, 'accounts/profile_favorite_story.html')
+
+
+class RegistrationView(TestCase):
+
+    def setUp(self):
+        self.url = reverse('accounts.views.registration_view')
+
+    def test_get(self):
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertIsInstance(response.context['form'], RegistrationFormUniqueEmail)
+        self.assertTemplateUsed(response, 'registration/registration_form.html')
 
 
 class CommentSendEmail(TestCase):
