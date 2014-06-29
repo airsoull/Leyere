@@ -191,7 +191,7 @@ PROFILE_LARGE_IMAGE_AVATAR_SIZE = '360x360'
 
 COMMENTS_APP = 'threadedcomments'
 
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+# STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 # HTML_MINIFY = True
 # EXCLUDE_FROM_MINIFYING = ('^admin/',)
