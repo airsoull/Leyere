@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
-from django.contrib.comments.models import Comment
+from threadedcomments.models import ThreadedComment
 
 from registration.forms import RegistrationFormUniqueEmail
 
@@ -156,5 +156,5 @@ class RegistrationView(TestCase):
 class CommentSendEmail(TestCase):
     
     def test_create_comment(self):
-        comment = Comment.objects.create()
+        comment = ThreadedComment.objects.create()
         print comment

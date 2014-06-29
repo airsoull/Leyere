@@ -1,4 +1,4 @@
-{% load sekizai_tags %}{% load staticfiles %}{% load i18n %}<!DOCTYPE html>
+{% load sekizai_tags %}{% load staticfiles %}{% load i18n %}{% load flatpages %}<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -216,35 +216,24 @@
                 </div>
 
 
-                {% comment %}
+                
                     
                 
                 <div class="row">
                     <div class="col-md-4">
-                        <h3 class="footer-widget-title">Sitemap</h3>
+                        {% comment %}
+                            <h3 class="footer-widget-title">Sitemap</h3>
+                        {% endcomment %}
                         <ul class="list-unstyled three_cols">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Portafolio</a></li>
-                            <li><a href="#">Works</a></li>
-                            <li><a href="#">Gallery</a></li>
-                            <li><a href="#">Pricing</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Our Team</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">Cantact</a></li>
+                            {% get_flatpages as flatpages %}
+                        {% for page in flatpages %}
+                                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                        {% endfor %}
+                            
                         </ul>
-                        <h3 class="footer-widget-title">Subscribe</h3>
-                        <p>Lorem ipsum Amet fugiat elit nisi anim mollit in labore ut esse Duis ullamco ad dolor veniam velit lorem ipsum dolor sit amet, consectetur adipisicing..</p>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Email Adress">
-                            <span class="input-group-btn">
-                                <button class="btn btn-success" type="button">Subscribe</button>
-                            </span>
-                        </div><!-- /input-group -->
                     </div>
+                </div> 
+                    {% comment %}
                     <div class="col-md-4">
                         <div class="footer-widget">
                             <h3 class="footer-widget-title">Recent Post</h3>

@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^activity/', include('actstream.urls')),
     url(r'^articles/comments/', include('django.contrib.comments.urls')),
     url(r'^search/', include('search.urls')),
+    url(r'^about/', include('django.contrib.flatpages.urls')),
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}, name='sitemap'),
     url(r'^admin/', include(admin.site.urls)),
 )
