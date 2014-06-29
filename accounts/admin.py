@@ -6,6 +6,7 @@ class ProfileAdmin(admin.ModelAdmin):
 	list_display = ('user', 'email_favorite_story', 'email_comment',)
 	readonly_fields = ('user',)
 	list_filter = ('email_favorite_story', 'email_comment',)
+	search_fields = ('user__username',)
 
 	def has_add_permission(self, request):
 		return False
