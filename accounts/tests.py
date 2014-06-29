@@ -1,8 +1,9 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
-from threadedcomments.models import ThreadedComment
+from django.contrib.contenttypes.models import ContentType
 
+from threadedcomments.models import ThreadedComment
 from registration.forms import RegistrationFormUniqueEmail
 
 from .forms import ProfileForm
@@ -154,7 +155,12 @@ class RegistrationView(TestCase):
 
 
 class CommentSendEmail(TestCase):
+
+    def setUp(self):
+        self.user = create_user()
+        self.category = create_category()
+        self.story = create_story(user=self.user, category=self.category)
     
-    def test_create_comment(self):
-        comment = ThreadedComment.objects.create()
-        print comment
+    # def test_create_comment(self):
+    #     content_type = ContentType.objects.get_for_model(self.story)
+    #     comment = ThreadedComment.objects.create(content_type_id=content_type.id, site_id=1, user=self.user)
