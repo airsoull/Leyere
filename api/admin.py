@@ -22,7 +22,7 @@ class ApiUserAdmin(UserAdmin):
     inlines = UserAdmin.inlines + [TokenInline]
 
 
-admin.site.unregister(User)
+# admin.site.unregister(User)
 admin.site.unregister(Token)
-admin.site.register(User, ApiUserAdmin)
+# admin.site.register(User, ApiUserAdmin)
 admin.site.register(Token, TokenAdmin)
