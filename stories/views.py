@@ -10,7 +10,7 @@ from django.contrib import messages
 from django.utils.translation import ugettext as _
 
 from .models import Story, Category
-from .forms import StoryForm
+from .forms import StoryForm, StoryFormCreate
 
 
 class StoryDetail(DetailView):
@@ -55,7 +55,7 @@ story_list_by_category = StoryListByCategory.as_view()
 
 class StoryRandom(RedirectView):
     permanent = False
-    
+
     def get_redirect_url(self):
         try:
             story = Story.objects.visible().order_by('?')[0]
@@ -68,7 +68,7 @@ story_random = StoryRandom.as_view()
 
 class StoryCreateView(CreateView):
     model = Story
-    form_class = StoryForm
+    form_class = StoryFormCreate
     template_name = 'stories/create_story_form.html'
 
     @method_decorator(login_required)
@@ -79,6 +79,9 @@ class StoryCreateView(CreateView):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
+        print '*'*10
+        print form.social
+        print '*'*10
         return super(StoryCreateView, self).form_valid(form)
 
     def get_success_url(self):
