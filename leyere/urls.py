@@ -27,3 +27,5 @@ if settings.DEBUG:
             'document_root': settings.MEDIA_ROOT}),
         url(r'^rosetta/', include('rosetta.urls')),
     )
+
+handler404 = 'config.views.handler_404'
