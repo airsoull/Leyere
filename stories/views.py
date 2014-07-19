@@ -9,8 +9,10 @@ from django.http import Http404
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 
+
 from .models import Story, Category
-from .forms import StoryForm
+from .forms import StoryForm, StoryFormCreate
+from leyere.social_network import update_social_network
 
 
 class StoryDetail(DetailView):
@@ -55,7 +57,7 @@ story_list_by_category = StoryListByCategory.as_view()
 
 class StoryRandom(RedirectView):
     permanent = False
-    
+
     def get_redirect_url(self):
         try:
             story = Story.objects.visible().order_by('?')[0]
@@ -68,17 +70,28 @@ story_random = StoryRandom.as_view()
 
 class StoryCreateView(CreateView):
     model = Story
-    form_class = StoryForm
+    form_class = StoryFormCreate
     template_name = 'stories/create_story_form.html'
 
     @method_decorator(login_required)
     def dispatch(self, request):
         return super(StoryCreateView, self).dispatch(request=request)
 
+    def get_form_kwargs(self):
+        kwargs = super(StoryCreateView, self ).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
     def form_valid(self, form):
         self.object = form.save(commit=False)
-        self.object.user = self.request.user
+        user = self.request.user
+        self.object.user = user
         self.object.save()
+        socials = form.cleaned_data['social']
+        url = self.object.get_absolute_full_url()
+        for social in socials:
+            update_social_network(user, social, url)
+
         return super(StoryCreateView, self).form_valid(form)
 
     def get_success_url(self):
