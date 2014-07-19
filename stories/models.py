@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 from django.core.validators import MaxLengthValidator
 from django.contrib.contenttypes import generic
+from django.contrib.sites.models import Site
 
 from mptt.models import MPTTModel, TreeForeignKey
 
@@ -69,6 +70,9 @@ class Story(models.Model):
 
     def get_absolute_url(self):
         return reverse('stories.views.story_detail_view', kwargs={'category': self.category.slug, 'slug': slugify(self.name), 'pk': self.pk})
+
+    def get_absolute_full_url(self):
+        return 'http://%s%s' % (Site.objects.get_current(), self.get_absolute_url())
 
     def clean(self):
         self.name = self.name.strip()

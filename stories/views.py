@@ -9,8 +9,10 @@ from django.http import Http404
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 
+
 from .models import Story, Category
 from .forms import StoryForm, StoryFormCreate
+from leyere.social_network import update_social_network
 
 
 class StoryDetail(DetailView):
@@ -75,13 +77,21 @@ class StoryCreateView(CreateView):
     def dispatch(self, request):
         return super(StoryCreateView, self).dispatch(request=request)
 
+    def get_form_kwargs(self):
+        kwargs = super(StoryCreateView, self ).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
     def form_valid(self, form):
         self.object = form.save(commit=False)
-        self.object.user = self.request.user
+        user = self.request.user
+        self.object.user = user
         self.object.save()
-        print '*'*10
-        print form.social
-        print '*'*10
+        socials = form.cleaned_data['social']
+        url = self.object.get_absolute_full_url()
+        for social in socials:
+            update_social_network(user, social, url)
+
         return super(StoryCreateView, self).form_valid(form)
 
     def get_success_url(self):

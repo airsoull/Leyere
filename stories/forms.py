@@ -16,16 +16,18 @@ class StoryForm(ModelForm):
 
 
 class StoryFormCreate(StoryForm):
-    SOCIAL_CHOICES = (('1', u'Twitter',),)
-    # ('2', _(u'Actualizado'),))
-    social = forms.ChoiceField(label=_('Redes Sociales'), widget=forms.CheckboxSelectMultiple, choices=SOCIAL_CHOICES, required=False)
+    social = forms.MultipleChoiceField(label=_('Redes Sociales'), widget=forms.CheckboxSelectMultiple, required=False)
 
-    def clean_social(self):
-        # cleaned_data = super(StoryFormCreate, self).clean()
-        self.socials = self.cleaned_data['social']
-        print self.socials
-
+    def __init__(self, user, *args, **kwargs):
+        SOCIAL_CHOICES = [(social.provider, social.provider) for social in user.social_auth.all()]
+        super(StoryForm, self).__init__(*args, **kwargs)
+        self.fields['category'].queryset = Category.objects.visible()
+        self.fields['social'].choices = SOCIAL_CHOICES # user.social_auth.values('provider').all()
 
 class FilterForm(forms.Form):
-    CHOICES = (('1', _(u'Creado'),), ('2', _(u'Actualizado'),))
-    filter = forms.ChoiceField(label=(u'Filtro'), widget=forms.Select, choices=CHOICES, initial=2, required=True)
+    CHOICES = (
+        (0, 'a'),
+        (1, 'b'),
+        (2, 'c'),
+    )
+    filter = forms.MultipleChoiceField(label=(u'Filtro'), widget=forms.CheckboxSelectMultiple, choices=CHOICES, required=False)
